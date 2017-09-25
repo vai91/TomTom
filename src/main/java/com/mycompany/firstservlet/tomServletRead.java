@@ -51,7 +51,7 @@ public class tomServletRead extends HttpServlet {
         while ((sCurrentLine = tomcatLogReader.readLine()) != null) {
             writer.println((sCurrentLine));
         }
-          writer.append("</h5>")
+          writer.append("</h4>")
                 .append("<br/>\r\n")
                 .append("	</body>\r\n")
                 .append("</html>\r\n");
@@ -99,7 +99,7 @@ public class tomServletRead extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         
-        readIT("catalina.2017-08-15.log",request,response);
+        readIT("catalina.2017-09-06.log",request,response);
     }
 
     /**
