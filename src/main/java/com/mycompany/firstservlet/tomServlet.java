@@ -58,7 +58,8 @@ public class tomServlet extends HttpServlet {
                 //System.out.println(file.getName());
                 s = s + "\n" + file.getName();
                 writer.append("<li>\r\n");
-                writer.append("		<a href=tomServletRead>" + file.getName() + "</a>\r\n");
+                //String parameterToPass = "tomServletRead?path=" + file.getName();
+                writer.append("		<a href=\"tomServletRead?path=" + file.getName() + "\">" + file.getName() + "</a>\r\n");
                 writer.append("<br/>\r\n");
             }
         }

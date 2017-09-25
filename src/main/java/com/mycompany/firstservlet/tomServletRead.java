@@ -19,12 +19,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mehmetefeekiner
  */
-
 public class tomServletRead extends HttpServlet {
-    
-    
-        public static void readIT(String path, HttpServletRequest request, HttpServletResponse response) throws IOException {
-            PrintWriter writer = response.getWriter();
+
+    public static void readIT(String path, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        PrintWriter writer = response.getWriter();
 
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
@@ -35,29 +33,30 @@ public class tomServletRead extends HttpServlet {
                 .append("	</head>\r\n")
                 .append("	<body>\r\n")
                 .append("           <h4>Tomcat Log Reader!</h3>\r\n")
-                .append("<h4>The LOG  you're currently seeing is:</h4>\r\n")
-                .append(path)
                 .append("<br/><br/>\r\n")
                 .append("<h4>");
         BufferedReader tomcatLogReader = null;
-
+        String passedParameter = request.getParameter(path);
+        
         try {
-            tomcatLogReader = new BufferedReader(new FileReader("/Users/mehmetefeekiner/Tomcat/logs/" + path));
+            tomcatLogReader = new BufferedReader(new FileReader("/Users/mehmetefeekiner/Tomcat/logs/" + passedParameter));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         String sCurrentLine;
 
+        writer.append("<h4>The LOG  you're currently seeing is:</h4>\r\n")
+              .append(path)
+              .append(passedParameter);
         while ((sCurrentLine = tomcatLogReader.readLine()) != null) {
             writer.println((sCurrentLine));
+            
         }
-          writer.append("</h4>")
+        writer.append("</h4>")
                 .append("<br/>\r\n")
                 .append("	</body>\r\n")
                 .append("</html>\r\n");
     }
-    
- 
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -76,7 +75,7 @@ public class tomServletRead extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet tomServletRead</title>");            
+            out.println("<title>Servlet tomServletRead</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet tomServletRead at " + request.getContextPath() + "</h1>");
@@ -98,8 +97,8 @@ public class tomServletRead extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
-        readIT("catalina.2017-09-06.log",request,response);
+
+        readIT("path", request, response);
     }
 
     /**
