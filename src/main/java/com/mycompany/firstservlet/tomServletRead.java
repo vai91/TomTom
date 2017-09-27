@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class tomServletRead extends HttpServlet {
 
-    public static void readIT(String path, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public static void readIT( HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter writer = response.getWriter();
 
         response.setContentType("text/html");
@@ -36,7 +36,13 @@ public class tomServletRead extends HttpServlet {
                 .append("<br/><br/>\r\n")
                 .append("<h4>");
         BufferedReader tomcatLogReader = null;
-        String passedParameter = request.getParameter(path);
+        String passedParameter = request.getParameter("path");
+        /*String passedJSParameter = request.getParameter("text");
+        String passedJSParameter2 = "some text";
+        response.getWriter().write(passedJSParameter2);
+        */
+        
+        
         
         try {
             tomcatLogReader = new BufferedReader(new FileReader("/Users/mehmetefeekiner/Tomcat/logs/" + passedParameter));
@@ -46,8 +52,10 @@ public class tomServletRead extends HttpServlet {
         String sCurrentLine;
 
         writer.append("<h4>The LOG  you're currently seeing is:</h4>\r\n")
-              .append(path)
-              .append(passedParameter);
+              .append("<h5>")
+              .append(passedParameter)
+              .append("</h5>");
+              
         while ((sCurrentLine = tomcatLogReader.readLine()) != null) {
             writer.println((sCurrentLine));
             
@@ -98,7 +106,7 @@ public class tomServletRead extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
 
-        readIT("path", request, response);
+        readIT( request, response);
     }
 
     /**

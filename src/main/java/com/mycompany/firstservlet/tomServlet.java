@@ -47,27 +47,91 @@ public class tomServlet extends HttpServlet {
                 .append("<html>\r\n")
                 .append("	<head>\r\n")
                 .append("		<title>TomServlet</title>\r\n")
+                .append("       <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\r\n")
+                .append("       <link href=\"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css\" rel=\"stylesheet\" />\r\n")
+                .append("       <script src=\"https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js\"></script>\r\n")
+                .append("<script>\n"
+                        + "var text=\"elif\"\n"
+                        + "function thisChangedFunction() {\n"
+                        + "text=$(\"#this option:selected\").text();\n"
+                                              
+                        + "}\n"
+                        + "$(document).ready(function(){\n"
+                        + "$(\"button\").click(function(){\n"
+                        + "var dataString = \"path=\" + text \n"
+                        + "alert(text);" 
+                        + "$.ajax({ \n"
+                        + "type: \"GET\", \n"
+                        + "url: \"tomServletRead\", \n"
+                        + "data: dataString, \n"
+                        + "success: function(data) { \n"
+                        + "$('#div1').show(); \n"
+                        + "$('#div1').html(data); \n"
+                        + "} \n"
+                        + "}); \n"
+                        //+ "$(\"#div1\").load(\"tomServletRead?path=catalina.out\")\n"
+                        + "alert(text);"
+                        + "});\n"
+                        + "});\n"
+                        + "</script>\r\n")
+                
+                /*
+                .append("<script>\n"
+                        + "var text=\"elif\"\n"
+                        + "function thisChangedFunction() {\n"
+                        + "text=$(\"#this option:selected\").text();\n"
+                        + "}\n"
+                        + "alert(text);")
+                .append("$(document).on(\"click\", \"#someButton\", function() { "
+                        + "alert(text);"
+                        + "$.get(\"tomServletRead\", function(text) {"
+                        + "$(\"#div1\").text(text);"
+                        + "});"
+                        + "});")
+                .append("</script>")
+                */
                 .append("	</head>\r\n")
                 .append("	<body>\r\n")
                 .append("           <h3>Tomcat Log Reader!</h3>\r\n")
-                .append("<ol>\r\n");
+                .append("       <div style=\"width:520px;margin:0px auto;margin-top:30px;height:500px;\">\r\n")
+                .append("           <select id='this' onchange='thisChangedFunction();' class=\"mySelect\" style=\"width:500px;\"\r\n");
 
+        /*
+                writer.append("<ol>\r\n");
+         */
         for (File file : listOfFiles) {
             if (file.isFile()) {
 
                 //System.out.println(file.getName());
                 s = s + "\n" + file.getName();
+                /*
                 writer.append("<li>\r\n");
+                 */
                 //String parameterToPass = "tomServletRead?path=" + file.getName();
+                writer.append("       <option>\r\n");
                 writer.append("		<a href=\"tomServletRead?path=" + file.getName() + "\">" + file.getName() + "</a>\r\n");
+                /*
                 writer.append("<br/>\r\n");
+                 */
+
             }
         }
-        writer.append("</li>\r\n")
-                .append("		<ol>\r\n")
-                .append("        	</li>\r\n")
-                .append("      	</ul>\r\n")
-                .append("	</body>\r\n")
+        writer.append("</option>\r\n")
+                .append("</select>\r\n")
+                .append("</div>\r\n")
+                .append("<script type=\"text/javascript\">\r\n")
+                .append("$(\".mySelect\").select2()\r\n")
+                .append("</script>\r\n");
+
+        /*
+        writer.append("</li>\r\n");
+        writer.append("		</ol>\r\n");
+         */
+        writer.append("<div id=\"div1\"><h2>Let jQuery AJAX Change This Text</h2></div>\n"
+                + "\n"
+                 //id=\"someButton\"
+                + "<button>Show the selected log</button>");
+        writer.append("	</body>\r\n")
                 .append("</html>\r\n");
 
         System.out.println("Method getTomLogs invoked.");
