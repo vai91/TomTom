@@ -5,22 +5,17 @@
  */
 package com.mycompany.firstservlet;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 
 /**
  *
  * @author mehmetefeekiner
  */
-public class tomServlet extends HttpServlet {
+public class TomServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -62,14 +57,14 @@ public class tomServlet extends HttpServlet {
                         + "alert(text);" 
                         + "$.ajax({ \n"
                         + "type: \"GET\", \n"
-                        + "url: \"tomServletRead\", \n"
+                        + "url: \"TomServletRead\", \n"
                         + "data: dataString, \n"
                         + "success: function(data) { \n"
                         + "$('#div1').show(); \n"
                         + "$('#div1').html(data); \n"
                         + "} \n"
                         + "}); \n"
-                        //+ "$(\"#div1\").load(\"tomServletRead?path=catalina.out\")\n"
+                        //+ "$(\"#div1\").load(\"TomServletRead?path=catalina.out\")\n"
                         + "alert(text);"
                         + "});\n"
                         + "});\n"
@@ -84,7 +79,7 @@ public class tomServlet extends HttpServlet {
                         + "alert(text);")
                 .append("$(document).on(\"click\", \"#someButton\", function() { "
                         + "alert(text);"
-                        + "$.get(\"tomServletRead\", function(text) {"
+                        + "$.get(\"TomServletRead\", function(text) {"
                         + "$(\"#div1\").text(text);"
                         + "});"
                         + "});")
@@ -107,9 +102,9 @@ public class tomServlet extends HttpServlet {
                 /*
                 writer.append("<li>\r\n");
                  */
-                //String parameterToPass = "tomServletRead?path=" + file.getName();
+                //String parameterToPass = "TomServletRead?path=" + file.getName();
                 writer.append("       <option>\r\n");
-                writer.append("		<a href=\"tomServletRead?path=" + file.getName() + "\">" + file.getName() + "</a>\r\n");
+                writer.append("		<a href=\"TomServletRead?path=" + file.getName() + "\">" + file.getName() + "</a>\r\n");
                 /*
                 writer.append("<br/>\r\n");
                  */
@@ -162,10 +157,10 @@ public class tomServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet tomServlet</title>");
+            out.println("<title>Servlet TomServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet tomServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet TomServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -186,8 +181,8 @@ public class tomServlet extends HttpServlet {
 //        processRequest(request, response);
 
         System.out.println("Project: FirstServlet\n"
-                + "Class: tomServlet.java\n"
-                + "Package: com.mycompany.firstservlet.tomServlet.java\n");
+                + "Class: TomServlet.java\n"
+                + "Package: com.mycompany.firstservlet.TomServlet.java\n");
 
         getTomLogs("/Users/mehmetefeekiner/Tomcat/logs", request, response);
 

@@ -5,21 +5,17 @@
  */
 package com.mycompany.firstservlet;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 
 /**
  *
  * @author mehmetefeekiner
  */
-public class tomServletRead extends HttpServlet {
+public class TomServletRead extends HttpServlet {
 
     public static void readIT( HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter writer = response.getWriter();
@@ -83,10 +79,10 @@ public class tomServletRead extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet tomServletRead</title>");
+            out.println("<title>Servlet TomServletRead</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet tomServletRead at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet TomServletRead at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
