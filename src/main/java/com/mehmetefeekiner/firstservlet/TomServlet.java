@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.firstservlet;
+package com.mehmetefeekiner.firstservlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -88,7 +88,7 @@ public class TomServlet extends HttpServlet {
                 .append("	</head>\r\n")
                 .append("	<body>\r\n")
                 .append("           <h3>Tomcat Log Reader!</h3>\r\n")
-                .append("       <div style=\"width:520px;margin:0px auto;margin-top:30px;height:500px;\">\r\n")
+                .append("       <div style=\"width:520px;margin:0px auto;margin-top:30px;\">\r\n")
                 .append("           <select id='this' onchange='thisChangedFunction();' class=\"mySelect\" style=\"width:500px;\"\r\n");
 
         /*
@@ -122,7 +122,7 @@ public class TomServlet extends HttpServlet {
         writer.append("</li>\r\n");
         writer.append("		</ol>\r\n");
          */
-        writer.append("<div id=\"div1\"><h2>Let jQuery AJAX Change This Text</h2></div>\n"
+        writer.append("<div id=\"div1\"><h2>The log will appear here</h2></div>\n"
                 + "\n"
                  //id=\"someButton\"
                 + "<button>Show the selected log</button>");
@@ -182,7 +182,7 @@ public class TomServlet extends HttpServlet {
 
         System.out.println("Project: FirstServlet\n"
                 + "Class: TomServlet.java\n"
-                + "Package: com.mycompany.firstservlet.TomServlet.java\n");
+                + "Package: TomServlet.java\n");
 
         getTomLogs("/Users/mehmetefeekiner/Tomcat/logs", request, response);
 

@@ -3,14 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.firstservlet;
+
+package com.mehmetefeekiner.firstservlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-
+/*
+* TODO
+* There are 2 other versions of this app on your mac.
+* One is in NetbeansProjects, the other is on Desktop/TomTom-master
+* Merge all the work you've done so far into this version and commit the changes.
+* Find out why there are 2 alerts when the log is selected by the user
+* */
 /**
  *
  * @author mehmetefeekiner
@@ -27,10 +34,8 @@ public class TomServletRead extends HttpServlet {
                 .append("	<head>\r\n")
                 .append("		<title>TomServletRead</title>\r\n")
                 .append("	</head>\r\n")
-                .append("	<body>\r\n")
-                .append("           <h4>Tomcat Log Reader!</h3>\r\n")
-                .append("<br/><br/>\r\n")
-                .append("<h4>");
+                .append("	<body>\r\n");
+
         BufferedReader tomcatLogReader = null;
         String passedParameter = request.getParameter("path");
         /*String passedJSParameter = request.getParameter("text");
